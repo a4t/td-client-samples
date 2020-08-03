@@ -1,0 +1,32 @@
+version: "3.7"
+
+services:
+  ruby:
+    build: ./ruby/
+    volumes:
+      - ./ruby:/td-client-samples/ruby
+    working_dir: /td-client-samples/ruby
+    env_file:
+      - config/td.env
+      - config/td.query
+    command: ruby main.rb
+
+  python:
+    build: ./python/
+    volumes:
+      - ./python:/td-client-samples/python
+    working_dir: /td-client-samples/python
+    env_file:
+      - config/td.env
+      - config/td.query
+    command: python main.py
+
+  cli:
+    build: ./cli/
+    volumes:
+      - ./cli:/td-client-samples/cli
+    working_dir: /td-client-samples/cli
+    env_file:
+      - config/td.env
+      - config/td.query
+    command: entrypoint.sh
